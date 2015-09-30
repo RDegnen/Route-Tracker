@@ -1,4 +1,6 @@
 'use strict';
+
+// On success load the map with the users current location as the coordinates
 function success(position) {
   var lat = position.coords.latitude;
   var lng = position.coords.longitude;
@@ -19,9 +21,29 @@ function success(position) {
   mapView.initialize();
 };
 
+function renderDefaultMap() {
+  var map = new Map({
+    zoom: 13
+  });
+  map.initMap({
+    coords: {
+      latitude: 42.3601,
+      longitude: -71.0589
+    }
+  });
+
+  var mapView = new MapView({
+    model: map
+  });
+  mapView.initialize();
+}
+
 function init() {
+  // Get the user's current location and return success callback
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success);
+  } else {
+    renderDefaultMap();
   }
 }
 
