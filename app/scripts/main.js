@@ -7,7 +7,7 @@ function init() {
   map.initMap({
     coords: {
       latitude: 42.3601,
-      longitude: 71.0589
+      longitude: -71.0589
     }
   });
 
