@@ -1,13 +1,15 @@
 'use strict';
+function success(position) {
+  var lat = position.coords.latitude;
+  var lng = position.coords.longitude;
 
-function init() {
   var map = new Map({
     zoom: 8
   });
   map.initMap({
     coords: {
-      latitude: 42.3601,
-      longitude: -71.0589
+      latitude: lat,
+      longitude: lng
     }
   });
 
@@ -15,6 +17,12 @@ function init() {
     model: map
   });
   mapView.initialize();
+};
+
+function init() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success);
+  }
 }
 
 $(document).ready(function() {
