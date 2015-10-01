@@ -6,7 +6,7 @@ function success(position) {
   var lng = position.coords.longitude;
 
   var map = new Map({
-    zoom: 8
+    zoom: 14
   });
   map.initMap({
     coords: {
@@ -23,7 +23,7 @@ function success(position) {
 
 function renderDefaultMap() {
   var map = new Map({
-    zoom: 13
+    zoom: 3
   });
   map.initMap({
     coords: {
@@ -43,6 +43,7 @@ function init() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success);
   } else {
+    // If geolocation is not supported by browser than render map without it
     renderDefaultMap();
   }
 }
