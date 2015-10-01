@@ -1,11 +1,6 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  defaults: {
-    region: 'us',
-    language: 'en'
-  },
-
   id: 'map-container',
 
   initialize: function() {
