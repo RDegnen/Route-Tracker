@@ -3,6 +3,7 @@
 var MapView = Backbone.View.extend({
   id: 'map-container',
 
+  // Initialize the google map in the map key of the Map model
   initialize: function() {
     this.model.set('map', new google.maps.Map(this.el, this.model.get('mapOptions')));
     this.render();
@@ -15,16 +16,19 @@ var MapView = Backbone.View.extend({
     });
     this.poly.setMap(this.map);
 
+    // Bind addLatLng to this object
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
   },
 
+  // Render the map in the map-container div
   render: function() {
     $('#map-container').replaceWith(this.el);
     return this;
   },
 
-  addLatLng: function(event, poly, map) {
+  // Adds a marker on click and connects multiple markers
+  addLatLng: function(event) {
     var path = this.poly.getPath();
 
     path.push(event.latLng);
