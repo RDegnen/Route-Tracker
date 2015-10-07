@@ -19,7 +19,7 @@ function success(position) {
     model: map
   });
   mapView.initialize();
-};
+}
 
 function renderDefaultMap() {
   var map = new Map({
@@ -50,4 +50,4 @@ function init() {
 
 $(document).ready(function() {
   init();
-})
+});
