@@ -43,8 +43,12 @@ var MapView = Backbone.View.extend({
 
   // Calculate the distance of the polyline
   calcDistance: function(array) {
+    // Distance is in meters
     var distance = google.maps.geometry.spherical.computeLength(array);
+
     var miles = distance * 0.00062137;
-    console.log(miles);
+    var kilometers = distance * 0.001;
+    console.log(miles.toFixed(2));
+    console.log(kilometers.toFixed(2));
   }
 });
