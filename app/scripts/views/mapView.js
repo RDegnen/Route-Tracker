@@ -32,11 +32,23 @@ var MapView = Backbone.View.extend({
     var path = this.poly.getPath();
 
     path.push(event.latLng);
+    this.calcDistance(path);
 
     var marker = new google.maps.Marker({
       position: event.latLng,
       title: '#' + path.getLength(),
       map: this.map
     });
+  },
+
+  // Calculate the distance of the polyline
+  calcDistance: function(array) {
+    // Distance is in meters
+    var distance = google.maps.geometry.spherical.computeLength(array);
+
+    var miles = distance * 0.00062137;
+    var kilometers = distance * 0.001;
+    console.log(miles.toFixed(2));
+    console.log(kilometers.toFixed(2));
   }
 });

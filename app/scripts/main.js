@@ -6,7 +6,7 @@ function success(position) {
   var lng = position.coords.longitude;
 
   var map = new Map({
-    zoom: 14
+    zoom: 16
   });
   map.initMap({
     coords: {
