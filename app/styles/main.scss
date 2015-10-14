@@ -4,3 +4,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
 @import 'partials/trackingView';
 @import 'partials/mapView';
+
+#div-container {
+  display: inline-flex;
+}
