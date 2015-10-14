@@ -16,7 +16,6 @@ var MapView = Backbone.View.extend({
     });
     this.poly.setMap(this.map);
 
-    // Bind addLatLng to this object
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
   },
@@ -48,7 +47,10 @@ var MapView = Backbone.View.extend({
 
     var miles = distance * 0.00062137;
     var kilometers = distance * 0.001;
-    console.log(miles.toFixed(2));
-    console.log(kilometers.toFixed(2));
+
+    var fixedMiles = miles.toFixed(2);
+    var fixedKilos = kilometers.toFixed(2);
+
+    $('.distance-span').text(fixedMiles);
   }
 });
