@@ -80,5 +80,9 @@ var MapView = Backbone.View.extend({
     $('#btn-kilos').on('click', function() {
       fn();
     });
+
+    $('#btn-miles').on('click', function() {
+      fn();
+    });
   }
 });
