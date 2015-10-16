@@ -18,6 +18,7 @@ var MapView = Backbone.View.extend({
 
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
+
   },
 
   // Render the map in the map-container div
@@ -51,6 +52,33 @@ var MapView = Backbone.View.extend({
     var fixedMiles = miles.toFixed(2);
     var fixedKilos = kilometers.toFixed(2);
 
-    $('.distance-span').text(fixedMiles);
+    var $btnM = $('#btn-miles');
+    var $btnK = $('#btn-kilos');
+    var $disSpan = $('.distance-span');
+
+    if ($btnM.hasClass('btn-active')) {
+        $disSpan.text(fixedMiles);
+      } else if ($btnK.hasClass('btn-active')) {
+        $disSpan.text(fixedKilos);
+      }
+
+    function swapDistance() {
+      $disSpan.empty();
+
+      if ($btnM.hasClass('btn-active')) {
+        $disSpan.text(fixedMiles);
+      } else if ($btnK.hasClass('btn-active')) {
+        $disSpan.text(fixedKilos);
+      }
+    }
+
+    this.mileKiloSwap(swapDistance);
+  },
+
+  mileKiloSwap: function(fn) {
+
+    $('#btn-kilos').on('click', function() {
+      fn();
+    });
   }
 });
