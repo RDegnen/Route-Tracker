@@ -2,6 +2,9 @@
 
 var MapView = Backbone.View.extend({
   id: 'map-container',
+  events: {
+    'click #btn-clear-map': 'removeLine'
+  },
 
   // Initialize the google map in the map key of the Map model
   initialize: function() {
@@ -19,6 +22,13 @@ var MapView = Backbone.View.extend({
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
 
+    var boundRemoveLine = _.bind(this.removeLine, this);
+    $('#btn-clear-map').on('click', boundRemoveLine);
+  },
+
+  removeLine: function() {
+    event.preventDefault();
+    this.poly.setMap();
   },
 
   // Render the map in the map-container div
@@ -30,6 +40,7 @@ var MapView = Backbone.View.extend({
   // Adds a marker on click and connects multiple markers
   addLatLng: function(event) {
     var path = this.poly.getPath();
+    var markers = [];
 
     path.push(event.latLng);
     this.calcDistance(path);
@@ -38,6 +49,19 @@ var MapView = Backbone.View.extend({
       position: event.latLng,
       title: '#' + path.getLength(),
       map: this.map
+    });
+    markers.push(marker);
+
+    function removePath(map) {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+      }
+    };
+
+    // this.removeLine(removePath);
+    $('#btn-clear-map').on('click', function(event) {
+      event.preventDefault();
+      removePath(null);
     });
   },
 
