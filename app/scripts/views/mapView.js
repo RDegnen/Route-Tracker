@@ -2,14 +2,15 @@
 
 var MapView = Backbone.View.extend({
   id: 'map-container',
-  events: {
-    'click #btn-clear-map': 'removeLine'
-  },
 
   // Initialize the google map in the map key of the Map model
   initialize: function() {
     this.model.set('map', new google.maps.Map(this.el, this.model.get('mapOptions')));
     this.render();
+    this.renderPolyline();
+  },
+
+  renderPolyline: function() {
     this.map = this.model.get('map');
 
     this.poly = new google.maps.Polyline({
@@ -29,6 +30,8 @@ var MapView = Backbone.View.extend({
   removeLine: function() {
     event.preventDefault();
     this.poly.setMap();
+    this.renderPolyline();
+    $('.distance-span').empty();
   },
 
   // Render the map in the map-container div
@@ -52,16 +55,15 @@ var MapView = Backbone.View.extend({
     });
     markers.push(marker);
 
-    function removePath(map) {
+    function removeMarkers(map) {
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
       }
     };
 
-    // this.removeLine(removePath);
     $('#btn-clear-map').on('click', function(event) {
       event.preventDefault();
-      removePath(null);
+      removeMarkers(null);
     });
   },
 
