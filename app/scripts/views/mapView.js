@@ -27,17 +27,18 @@ var MapView = Backbone.View.extend({
     $('#btn-clear-map').on('click', boundRemoveLine);
   },
 
+  // Render the map in the map-container div
+  render: function() {
+    $('#map-container').replaceWith(this.el);
+    return this;
+  },
+
+  // Removes polyline and re-renders it
   removeLine: function() {
     event.preventDefault();
     this.poly.setMap();
     this.renderPolyline();
     $('.distance-span').empty();
-  },
-
-  // Render the map in the map-container div
-  render: function() {
-    $('#map-container').replaceWith(this.el);
-    return this;
   },
 
   // Adds a marker on click and connects multiple markers
@@ -59,11 +60,16 @@ var MapView = Backbone.View.extend({
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
       }
+      markers = [];
     };
 
     $('#btn-clear-map').on('click', function(event) {
       event.preventDefault();
       removeMarkers(null);
+    });
+
+    $('#btn-clear-point').on('click', function(event) {
+      event.preventDefault();
     });
   },
 
