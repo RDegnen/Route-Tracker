@@ -15,6 +15,9 @@ var MapView = Backbone.View.extend({
     this.render();
     this.renderPolyline();
     this.markers = [];
+
+    var boundAddLatLng = _.bind(this.addLatLng, this);
+    this.map.addListener('click', boundAddLatLng);
   },
 
   renderMap: function() {
@@ -35,9 +38,6 @@ var MapView = Backbone.View.extend({
       strokeWeight: 3
     });
     this.poly.setMap(this.map);
-
-    var boundAddLatLng = _.bind(this.addLatLng, this);
-    this.map.addListener('click', boundAddLatLng);
   },
 
   // Removes polyline and re-renders it
