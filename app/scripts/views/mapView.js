@@ -1,13 +1,29 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  id: 'map-container',
+  el: '#view-container',
+  events: {
+    'click #btn-clear-map': function() {
+      this.removeMarkers();
+      this.removeLine();
+    },
+    'click #btn-clear-point': 'removeLastLeg'
+  },
 
   // Initialize the google map in the map key of the Map model
   initialize: function() {
-    this.model.set('map', new google.maps.Map(this.el, this.model.get('mapOptions')));
     this.render();
     this.renderPolyline();
+    this.markers = [];
+  },
+
+  renderMap: function() {
+    this.model.set('map', new google.maps.Map(document.getElementById('map-container'), this.model.get('mapOptions')));
+  },
+
+  render: function() {
+    this.renderMap();
+    return this;
   },
 
   renderPolyline: function() {
@@ -22,29 +38,30 @@ var MapView = Backbone.View.extend({
 
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
-
-    var boundRemoveLine = _.bind(this.removeLine, this);
-    $('#btn-clear-map').on('click', boundRemoveLine);
-  },
-
-  // Render the map in the map-container div
-  render: function() {
-    $('#map-container').replaceWith(this.el);
-    return this;
   },
 
   // Removes polyline and re-renders it
   removeLine: function() {
-    event.preventDefault();
     this.poly.setMap();
     this.renderPolyline();
     $('.distance-span').empty();
   },
 
+  removeMarkers: function() {
+    for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
+      }
+    this.markers = [];
+  },
+
+  removeLastLeg: function() {
+    this.markers[this.markers.length - 1].setMap(null);
+    this.markers.pop();
+  },
+
   // Adds a marker on click and connects multiple markers
   addLatLng: function(event) {
     var path = this.poly.getPath();
-    var markers = [];
 
     path.push(event.latLng);
     this.calcDistance(path);
@@ -54,23 +71,8 @@ var MapView = Backbone.View.extend({
       title: '#' + path.getLength(),
       map: this.map
     });
-    markers.push(marker);
-
-    function removeMarkers(map) {
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-      }
-      markers = [];
-    };
-
-    $('#btn-clear-map').on('click', function(event) {
-      event.preventDefault();
-      removeMarkers(null);
-    });
-
-    $('#btn-clear-point').on('click', function(event) {
-      event.preventDefault();
-    });
+    this.markers.push(marker);
+    console.log(this.markers);
   },
 
   // Calculate the distance of the polyline
