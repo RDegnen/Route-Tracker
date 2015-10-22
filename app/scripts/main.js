@@ -53,7 +53,6 @@ $(document).ready(function() {
 
   var $btnM = $('#btn-miles');
   var $btnK = $('#btn-kilos');
-  var $disSpan = $('.distance-span');
 
   $btnM.on('click', function() {
     $btnM.addClass('btn-active');
