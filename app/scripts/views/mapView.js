@@ -1,12 +1,19 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  id: 'div-container',
+  el: '#div-container',
+  events: {
+    'click #btn-clear-map': function(e) {
+      this.removeMarkers(e);
+      this.removeLine(e);
+    }
+  },
 
   // Initialize the google map in the map key of the Map model
   initialize: function() {
     this.render();
     this.renderPolyline();
+    this.markers = [];
   },
 
   renderMap: function() {
@@ -25,9 +32,6 @@ var MapView = Backbone.View.extend({
 
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
-
-    var boundRemoveLine = _.bind(this.removeLine, this);
-    $('#btn-clear-map').on('click', boundRemoveLine);
   },
 
   render: function() {
@@ -43,11 +47,17 @@ var MapView = Backbone.View.extend({
     $('.distance-span').empty();
   },
 
+  removeMarkers: function() {
+    for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
+      }
+    this.markers = [];
+  },
+
   // Adds a marker on click and connects multiple markers
   addLatLng: function(event) {
     var path = this.poly.getPath();
-    var markers = [];
-    debugger;
+
     path.push(event.latLng);
     this.calcDistance(path);
 
@@ -56,19 +66,8 @@ var MapView = Backbone.View.extend({
       title: '#' + path.getLength(),
       map: this.map
     });
-    markers.push(marker);
-
-    function removeMarkers(map) {
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-      }
-      markers = [];
-    };
-
-    $('#btn-clear-map').on('click', function(event) {
-      event.preventDefault();
-      removeMarkers(null);
-    });
+    this.markers.push(marker);
+    console.log(this.markers);
 
     $('#btn-clear-point').on('click', function(event) {
       event.preventDefault();
