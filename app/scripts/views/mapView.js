@@ -55,6 +55,8 @@ var MapView = Backbone.View.extend({
     this.markers = [];
   },
 
+  // Remove the last marker and line created and re-calculates
+  // the distance
   removeLastLeg: function() {
     this.markers[this.markers.length - 1].setMap(null);
     this.markers.pop();
