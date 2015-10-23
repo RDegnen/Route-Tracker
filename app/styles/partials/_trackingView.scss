@@ -4,3 +4,29 @@
   position: relative;
   left: 0;
 }
+
+.btn-div {
+  text-align: center;
+
+  button {
+    margin: 2.5px;
+  }
+}
+
+#btm-btn-div {
+  position: absolute;
+  bottom: 0;
+}
+
+#top-btn-div {
+  margin: 20px 0 20px 0;
+}
+
+.btn-style {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.distance {
+  font-size: 24px;
+}

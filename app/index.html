@@ -22,9 +22,14 @@
         <div id="view-container">
             <div id="map-container"></div>
             <div id="tracking-info">
-                <button id="btn-miles" class="btn btn-default btn-active">Miles</button><button id="btn-kilos" class="btn btn-default">Kilometers</button>
+                <div id="top-btn-div" class="btn-div">
+                    <button id="btn-miles" class="btn btn-default btn-style btn-active">Miles</button><button id="btn-kilos" class="btn btn-default btn-style">Kilometers</button>
+                    <hr>
+                </div>
                 <p class="distance">Distance: <span class="distance-span"></span></p>
-                <button id="btn-clear-map" class="btn btn-danger">Clear Map</button><button id="btn-clear-point" class="btn btn-danger">Clear last point</button>
+                <div id="btm-btn-div" class="btn-div">
+                    <button id="btn-clear-map" class="btn btn-danger btn-style">Clear Map</button><button id="btn-clear-point" class="btn btn-danger btn-style">Clear Point</button>
+                </div>
             </div>
         </div>
         <!-- build:js scripts/vendor.js -->

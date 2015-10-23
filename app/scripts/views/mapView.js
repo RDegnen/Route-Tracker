@@ -97,9 +97,9 @@ var MapView = Backbone.View.extend({
     var $disSpan = $('.distance-span');
 
     if ($btnM.hasClass('btn-active')) {
-      $disSpan.text(fixedMiles);
+      $disSpan.text(fixedMiles + ' Miles');
     } else if ($btnK.hasClass('btn-active')) {
-      $disSpan.text(fixedKilos);
+      $disSpan.text(fixedKilos + ' Km');
     }
 
     // Called when mileKiloSwap is run to change from
@@ -108,9 +108,9 @@ var MapView = Backbone.View.extend({
       $disSpan.empty();
 
       if ($btnM.hasClass('btn-active')) {
-        $disSpan.text(fixedMiles);
+        $disSpan.text(fixedMiles + ' Miles');
       } else if ($btnK.hasClass('btn-active')) {
-        $disSpan.text(fixedKilos);
+        $disSpan.text(fixedKilos + ' Km');
       }
     }
     // Call mileKiloSwap with swapDistance() as param
