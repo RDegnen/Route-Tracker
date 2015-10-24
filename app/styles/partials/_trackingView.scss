@@ -16,6 +16,10 @@
 #btm-btn-div {
   position: absolute;
   bottom: 0;
+
+  button {
+    background: #C23B22;
+  }
 }
 
 #top-btn-div {
@@ -29,4 +33,5 @@
 
 .distance {
   font-size: 24px;
+  margin-left: 5px;
 }
