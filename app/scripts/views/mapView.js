@@ -15,6 +15,11 @@ var MapView = Backbone.View.extend({
     this.renderPolyline();
     this.markers = [];
 
+    var pos = this.model.get('currentLatLng');
+    var infoWindow = new google.maps.InfoWindow({map: this.map});
+    infoWindow.setPosition(pos);
+    infoWindow.setContent('You');
+
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
   },
