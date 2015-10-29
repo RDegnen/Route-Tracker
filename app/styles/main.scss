@@ -8,9 +8,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 body {
   margin: 0 auto;
   width: 1050px;
+  background: #CFCFC4;
 }
 
 #view-container {
   display: inline-flex;
-  border: 3px solid;
+  border-radius: 15px;
 }

@@ -15,6 +15,11 @@ var MapView = Backbone.View.extend({
     this.renderPolyline();
     this.markers = [];
 
+    var pos = this.model.get('currentLatLng');
+    var infoWindow = new google.maps.InfoWindow({map: this.map});
+    infoWindow.setPosition(pos);
+    infoWindow.setContent('You');
+
     var boundAddLatLng = _.bind(this.addLatLng, this);
     this.map.addListener('click', boundAddLatLng);
   },
@@ -46,6 +51,9 @@ var MapView = Backbone.View.extend({
     this.poly.setMap();
     this.renderPolyline();
     $('.distance-span').empty();
+
+    var emptyArr = [];
+    this.calcDistance(emptyArr);
   },
 
   removeMarkers: function() {
@@ -97,9 +105,9 @@ var MapView = Backbone.View.extend({
     var $disSpan = $('.distance-span');
 
     if ($btnM.hasClass('btn-active')) {
-      $disSpan.text(fixedMiles);
+      $disSpan.text(fixedMiles + ' Miles');
     } else if ($btnK.hasClass('btn-active')) {
-      $disSpan.text(fixedKilos);
+      $disSpan.text(fixedKilos + ' Km');
     }
 
     // Called when mileKiloSwap is run to change from
@@ -108,9 +116,9 @@ var MapView = Backbone.View.extend({
       $disSpan.empty();
 
       if ($btnM.hasClass('btn-active')) {
-        $disSpan.text(fixedMiles);
+        $disSpan.text(fixedMiles + ' Miles');
       } else if ($btnK.hasClass('btn-active')) {
-        $disSpan.text(fixedKilos);
+        $disSpan.text(fixedKilos + ' Km');
       }
     }
     // Call mileKiloSwap with swapDistance() as param

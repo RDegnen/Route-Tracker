@@ -3,4 +3,38 @@
   display: inline-block;
   position: relative;
   left: 0;
+  background: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.btn-div {
+  text-align: center;
+
+  button {
+    margin: 2.5px;
+  }
+}
+
+#btm-btn-div {
+  position: absolute;
+  bottom: 0;
+
+  button {
+    background: #C23B22;
+  }
+}
+
+#top-btn-div {
+  margin: 20px 0 20px 0;
+}
+
+.btn-style {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.distance {
+  font-size: 24px;
+  margin-left: 5px;
 }
