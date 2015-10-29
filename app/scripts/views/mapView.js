@@ -1,7 +1,8 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  el: '#view-container',
+  el: $('body'),
+  template: _.template($('#routeTrackerTemplate').html()),
   events: {
     'click #btn-clear-map': function() {
       this.removeMarkers();
@@ -26,10 +27,12 @@ var MapView = Backbone.View.extend({
 
   // Render the google map in the map key of the model
   renderMap: function() {
-    this.model.set('map', new google.maps.Map(document.getElementById('map-container'), this.model.get('mapOptions')));
+    var element = this.$('#map-container');
+    this.model.set('map', new google.maps.Map(element.get(0), this.model.get('mapOptions')));
   },
 
   render: function() {
+    this.$el.html(this.template(this));
     this.renderMap();
     return this;
   },

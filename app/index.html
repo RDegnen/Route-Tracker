@@ -19,20 +19,22 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="view-container">
-            <!-- <img id="loading-gif" src="images/spin.gif"> -->
-            <div id="map-container"></div>
-            <div id="tracking-info">
-                <div id="top-btn-div" class="btn-div">
-                    <button id="btn-miles" class="btn btn-default btn-style btn-active">Miles</button><button id="btn-kilos" class="btn btn-default btn-style">Kilometers</button>
-                    <hr>
-                </div>
-                <p class="distance">Distance: <span class="distance-span"></span></p>
-                <div id="btm-btn-div" class="btn-div">
-                    <button id="btn-clear-map" class="btn btn-danger btn-style">Clear Map</button><button id="btn-clear-point" class="btn btn-danger btn-style">Clear Point</button>
+        <script type="text/template" id="routeTrackerTemplate">
+            <div id="view-container">
+                <div id="map-container"></div>
+                <div id="tracking-info">
+                    <div id="top-btn-div" class="btn-div">
+                        <button id="btn-miles" class="btn btn-default btn-style btn-active">Miles</button><button id="btn-kilos" class="btn btn-default btn-style">Kilometers</button>
+                        <hr>
+                    </div>
+                    <p class="distance">Distance: <span class="distance-span"></span></p>
+                    <div id="btm-btn-div" class="btn-div">
+                        <button id="btn-clear-map" class="btn btn-danger btn-style">Clear Map</button><button id="btn-clear-point" class="btn btn-danger btn-style">Clear Point</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </script>
+
         <!-- build:js scripts/vendor.js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/lodash/dist/lodash.compat.js"></script>
