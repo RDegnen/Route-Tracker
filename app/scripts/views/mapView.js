@@ -51,6 +51,9 @@ var MapView = Backbone.View.extend({
     this.poly.setMap();
     this.renderPolyline();
     $('.distance-span').empty();
+
+    var emptyArr = [];
+    this.calcDistance(emptyArr);
   },
 
   removeMarkers: function() {
