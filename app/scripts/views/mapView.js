@@ -1,7 +1,7 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  el: $('body'),
+  el: $('#app-container'),
   template: _.template($('#routeTrackerTemplate').html()),
   events: {
     'click #btn-clear-map': function() {
@@ -132,9 +132,13 @@ var MapView = Backbone.View.extend({
   // of either button
   mileKiloSwap: function(fn) {
     $('#btn-kilos').on('click', function() {
+      $('#btn-kilos').addClass('btn-active');
+      $('#btn-miles').removeClass('btn-active');
       fn();
     });
     $('#btn-miles').on('click', function() {
+      $('#btn-miles').addClass('btn-active');
+      $('#btn-kilos').removeClass('btn-active');
       fn();
     });
   }

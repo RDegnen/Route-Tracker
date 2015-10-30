@@ -50,17 +50,4 @@ function init() {
 
 $(document).ready(function() {
   init();
-
-  var $btnM = $('#btn-miles');
-  var $btnK = $('#btn-kilos');
-
-  $btnM.on('click', function() {
-    $btnM.addClass('btn-active');
-    $btnK.removeClass('btn-active');
-  });
-
-  $btnK.on('click', function() {
-    $btnK.addClass('btn-active');
-    $btnM.removeClass('btn-active');
-  });
 });
