@@ -1,7 +1,8 @@
 'use strict';
 
 var MapView = Backbone.View.extend({
-  el: '#view-container',
+  el: $('#app-container'),
+  template: _.template($('#routeTrackerTemplate').html()),
   events: {
     'click #btn-clear-map': function() {
       this.removeMarkers();
@@ -26,10 +27,12 @@ var MapView = Backbone.View.extend({
 
   // Render the google map in the map key of the model
   renderMap: function() {
-    this.model.set('map', new google.maps.Map(document.getElementById('map-container'), this.model.get('mapOptions')));
+    var element = this.$('#map-container');
+    this.model.set('map', new google.maps.Map(element.get(0), this.model.get('mapOptions')));
   },
 
   render: function() {
+    this.$el.html(this.template(this));
     this.renderMap();
     return this;
   },
@@ -129,9 +132,13 @@ var MapView = Backbone.View.extend({
   // of either button
   mileKiloSwap: function(fn) {
     $('#btn-kilos').on('click', function() {
+      $('#btn-kilos').addClass('btn-active');
+      $('#btn-miles').removeClass('btn-active');
       fn();
     });
     $('#btn-miles').on('click', function() {
+      $('#btn-miles').addClass('btn-active');
+      $('#btn-kilos').removeClass('btn-active');
       fn();
     });
   }

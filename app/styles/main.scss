@@ -5,10 +5,21 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 @import 'partials/trackingView';
 @import 'partials/mapView';
 
+// Variables------------------------------
+$pastel-grey: #CFCFC4;
+$pastel-dark-red: #C23B22;
+
+// Style----------------------------------
+html {
+  width:100%;
+  height:100%;
+  background: $pastel-grey url(../../images/spin.gif) no-repeat center center;
+}
+
 body {
   margin: 0 auto;
   width: 1050px;
-  background: #CFCFC4;
+  background: $pastel-grey;
 }
 
 #view-container {
