@@ -65,10 +65,11 @@ var AppRouter = Backbone.Router.extend({
       navigator.geolocation.getCurrentPosition(this.routeTrackerSuccess);
     } else {
       // If geolocation is not supported by browser than render map without it
-      this.renderDefaultMap();
+      this.renderDefaultMapTracker();
     }
   },
 
+  // On success load the map with the users current location as the coordinates
   routeTrackerSuccess: function(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
@@ -83,13 +84,13 @@ var AppRouter = Backbone.Router.extend({
       }
     });
 
-    var mapView = new MapView({
+    var routeTrackerView = new RouteTrackerView({
       model: map
     });
-    mapView.initialize();
+    routeTrackerView.initialize();
   },
 
-  renderDefaultMap: function() {
+  renderDefaultMapTracker: function() {
     var map = new Map({
     zoom: 3
     });
@@ -100,10 +101,10 @@ var AppRouter = Backbone.Router.extend({
       }
     });
 
-    var mapView = new MapView({
+    var routeTrackerView = new RouteTrackerView({
       model: map
     });
-    mapView.initialize();
+    routeTrackerView.initialize();
   }
 });
 
