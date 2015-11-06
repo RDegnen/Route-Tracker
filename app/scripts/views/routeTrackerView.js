@@ -1,6 +1,6 @@
 'use strict';
 
-var MapView = Backbone.View.extend({
+var RouteTrackerView = Backbone.View.extend({
   el: $('#app-container'),
   template: _.template($('#routeTrackerTemplate').html()),
   events: {
