@@ -1,13 +1,15 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
+// Variables------------------------------
+$pastel-grey: #CFCFC4;
+$pastel-dark-red: #C23B22;
+
+// Imports--------------------------------
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
 
 @import 'partials/trackingView';
 @import 'partials/mapView';
-
-// Variables------------------------------
-$pastel-grey: #CFCFC4;
-$pastel-dark-red: #C23B22;
+@import 'partials/navbar';
 
 // Style----------------------------------
 html {
@@ -26,3 +28,4 @@ body {
   display: inline-flex;
   border-radius: 15px;
 }
+
