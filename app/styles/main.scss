@@ -24,6 +24,10 @@ body {
   background: $pastel-grey;
 }
 
+#app-container {
+  margin-top: 5%;
+}
+
 #view-container {
   display: inline-flex;
   border-radius: 15px;
