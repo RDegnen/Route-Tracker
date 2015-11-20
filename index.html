@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>RouteTracker</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/a6f8b5f5.main.css">
+        <script src="scripts/vendor/a8bcb0b6.modernizr.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7LfS5j2xzbCguThAEJUHY4kRl_JnusY&libraries=geometry">
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <section id="app-container">
+            <div id="background">
+                <h1>Loading...</h1>
+            </div>
+        </section>
+
+        <script type="text/template" id="routeTrackerTemplate">
+            <div id="view-container">
+                <div id="map-container"></div>
+                <div id="tracking-info">
+                    <div id="top-btn-div" class="btn-div">
+                        <button id="btn-miles" class="btn btn-default btn-style btn-active">Miles</button><button id="btn-kilos" class="btn btn-default btn-style">Kilometers</button>
+                        <hr>
+                    </div>
+                    <p class="distance">Distance: <span class="distance-span"></span></p>
+                    <div id="btm-btn-div" class="btn-div">
+                        <button id="btn-clear-map" class="btn btn-danger btn-style">Clear Map</button><button id="btn-clear-point" class="btn btn-danger btn-style">Clear Point</button>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script src="scripts/fda82021.vendor.js"></script>
+
+        <script src="scripts/8db07988.plugins.js"></script>
+
+        <script src="scripts/024c04d8.main.js"></script>
+</body>
+</html>
